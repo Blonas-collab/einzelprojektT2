@@ -1,181 +1,119 @@
-function random(max: number) {
-  return Math.floor(Math.random() * max);
+class DrawingApp {
+  private canvas: HTMLCanvasElement;
+  private context: CanvasRenderingContext2D;
+  private paint: boolean;
+  
+  private clickX: number[] = [];
+  private clickY: number[] = [];
+  private clickDrag: boolean[] = [];
+  
+  constructor() {
+      let canvas = document.getElementById('canvas') as
+                   HTMLCanvasElement;
+      let context = canvas.getContext("2d");
+      context.lineCap = 'round';
+      context.lineJoin = 'round';
+      context.strokeStyle = 'black';
+      context.lineWidth = 1;
+  
+      this.canvas = canvas;
+      this.context = context;
+  
+      this.redraw();
+      this.createUserEvents();
+  }
+  private createUserEvents() {
+    let canvas = this.canvas;
+
+    canvas.addEventListener("mousedown", this.pressEventHandler);
+    canvas.addEventListener("mousemove", this.dragEventHandler);
+    canvas.addEventListener("mouseup", this.releaseEventHandler);
+    canvas.addEventListener("mouseout", this.cancelEventHandler);
+
+    canvas.addEventListener("touchstart", this.pressEventHandler);
+    canvas.addEventListener("touchmove", this.dragEventHandler);
+    canvas.addEventListener("touchend", this.releaseEventHandler);
+    canvas.addEventListener("touchcancel", this.cancelEventHandler);
+
+    document.getElementById('clear')
+            .addEventListener("click", this.clearEventHandler);
 }
 
-class canvas {
-  viewport: HTMLCanvasElement;
-  ctx: CanvasRenderingContext2D;
-  width: number;
-  height: number;
+private redraw() {
+    let clickX = this.clickX;
+    let context = this.context;
+    let clickDrag = this.clickDrag;
+    let clickY = this.clickY;
+    for (let i = 0; i < clickX.length; ++i) {
+        context.beginPath();
+        if (clickDrag[i] && i) {
+            context.moveTo(clickX[i - 1], clickY[i - 1]);
+        } else {
+            context.moveTo(clickX[i] - 1, clickY[i]);
+        }
 
-  constructor(viewport: HTMLCanvasElement) {
-    this.viewport = viewport;
-    this.width = viewport.width = window.innerWidth || document.body.clientWidth;
-    this.height = viewport.height = window.innerHeight || document.body.clientHeight;
-    const ctx = viewport.getContext('2d');
-    if (!ctx) {
-      throw new Error("Failed to getContext from canvas element");
+        context.lineTo(clickX[i], clickY[i]);
+        context.stroke();
     }
-    this.ctx = ctx;
-  }
-
-  square(startX: number, startY: number) {
-    this.ctx.fillRect(startX, startY, 50, 50);
-  }
-
-  triangle(startX: number, startY: number) {
-    this.ctx.beginPath();
-    this.ctx.moveTo(startX, startY);
-    this.ctx.lineTo(startX + 50, startY);
-    this.ctx.lineTo(startX + 25, startY - 50);
-    this.ctx.fill();
-  }
-
-  circle(startX: number, startY: number) {
-    this.ctx.beginPath();
-    this.ctx.arc(startX, startY, 25, 0, Math.PI * 2, true);
-    this.ctx.fill();
-  }
+    context.closePath();
+}
+private addClick(x: number, y: number, dragging: boolean) {
+  this.clickX.push(x);
+  this.clickY.push(y);
+  this.clickDrag.push(dragging);
 }
 
-class Lines extends canvas {
-  render() {
-    this.ctx.lineWidth = 3;
-
-    // Between 5 and 10 lines
-    const lineCount = 5 + random(5);
-
-    const colors = ['deeppink', 'darkorange', 'lime'];
-
-    for (let i = 0; i < lineCount; i++) {
-      const color = colors[random(colors.length)];
-      const startX = random(this.width);
-      const startY = random(this.height / 2);
-      const endX = random(this.width);
-      const endY = random(this.height / 2) + (this.height / 2);
-      this.ctx.strokeStyle = color;
-      this.ctx.beginPath();
-      this.ctx.moveTo(startX, startY);
-      this.ctx.lineTo(endX, endY);
-      this.ctx.stroke();
-    }
-  }
+private clearCanvas() {
+  this.context
+      .clearRect(0, 0, this.canvas.width, this.canvas.height);
+  this.clickX = [];
+  this.clickY = [];
+  this.clickDrag = [];
+}
+private clearEventHandler = () => {
+  this.clearCanvas();
 }
 
-class Shapes extends canvas {
-  [key: string]: any;
-
-  render() {
-    this.ctx.lineWidth = 3;
-
-    const shapes = ['square', 'triangle', 'circle'];
-
-    const colors = [
-      'rgba(255, 0, 0, 0.8)', // Red
-      'rgba(255, 255, 0, 0.8)', // Yellow
-      'rgba(0, 0, 255, 0.8)' // Blue
-    ];
-
-    const shapeCount = 18;
-
-    for (let i = 0; i < shapeCount; i++) {
-      const color = colors[random(colors.length)];
-      const shape = shapes[random(shapes.length)];
-      const startX = random(this.width);
-      const startY = random(this.height);
-      this.ctx.fillStyle = color;
-      this[shape](startX, startY);
-    }
-  }
+private releaseEventHandler = () => {
+  this.paint = false;
+  this.redraw();
 }
 
-class Combo extends canvas {
-  render() {
-    randomBackgroundColor();
-    Lines.prototype.render.call(this);
-    Shapes.prototype.render.call(this);
-  }
+private cancelEventHandler = () => {
+  this.paint = false;
+}
+private pressEventHandler = (e: MouseEvent | TouchEvent) => {
+  let mouseX = (e as TouchEvent).changedTouches ?
+               (e as TouchEvent).changedTouches[0].pageX :
+               (e as MouseEvent).pageX;
+  let mouseY = (e as TouchEvent).changedTouches ?
+               (e as TouchEvent).changedTouches[0].pageY :
+               (e as MouseEvent).pageY;
+  mouseX -= this.canvas.offsetLeft;
+  mouseY -= this.canvas.offsetTop;
+
+  this.paint = true;
+  this.addClick(mouseX, mouseY, false);
+  this.redraw();
 }
 
-function randomBackgroundColor() {
-  const rgb = [
-    random(255),
-    random(255),
-    random(255)
-  ].join(",");
-  document.body.style.cssText = `background-color: rgb(${rgb})`;
-}
+private dragEventHandler = (e: MouseEvent | TouchEvent) => {
+  let mouseX = (e as TouchEvent).changedTouches ?
+               (e as TouchEvent).changedTouches[0].pageX :
+               (e as MouseEvent).pageX;
+  let mouseY = (e as TouchEvent).changedTouches ?
+               (e as TouchEvent).changedTouches[0].pageY :
+               (e as MouseEvent).pageY;
+  mouseX -= this.canvas.offsetLeft;
+  mouseY -= this.canvas.offsetTop;
 
-function changingRandomBackgroundColor() {
-  return setInterval(randomBackgroundColor, 500);
-}
-
-function renderShapes() {
-  const viewport = <HTMLCanvasElement | null>document.getElementById('viewport');
-  if (!viewport) {
-    return;
+  if (this.paint) {
+      this.addClick(mouseX, mouseY, true);
+      this.redraw();
   }
 
-  const shapes = new Shapes(viewport);
-  shapes.render();
+  e.preventDefault();
+}
 }
 
-function renderLines() {
-  const viewport = <HTMLCanvasElement | null>document.getElementById('viewport');
-  if (!viewport) {
-    throw new Error("Couldn't find element with id 'viewport'");
-  }
-
-  const lines = new Lines(viewport);
-  lines.render();
-}
-
-function renderCombo() {
-  const viewport = <HTMLCanvasElement | null>document.getElementById('viewport');
-  if (!viewport) {
-    throw new Error("Couldn't find element with id 'viewport'");
-  }
-
-  const combo = new Combo(viewport);
-  combo.render();
-}
-
-
-/*export class Zeichenfläche {
-  canvas!: HTMLCanvasElement;
-  context: CanvasRenderingContext2D;
-  paint:boolean = false;
-  coord: {x:number , y:number};
-  pencilColors;
-  pencilIndex: number;
-  brushSize: number;*/
-
-
-
-
-
-
-/*//THIS IS THE ENTRY FILE - WRITE YOUR MAIN LOGIC HERE!
-
-import { helloWorld, Beispiel } from "./myModule";
-import { alertMe } from "./myOtherModule";
-
-console.log(helloWorld);
-customElements.define("my-beispiel", Beispiel);
-
-alertMe();
-
-const myInputValue = document.querySelector<HTMLInputElement>("#myInput");
-
-const myInputValueAlternate = document.querySelector(
-  "#myInput"
-) as HTMLInputElement;
-
-document
-  .querySelector<HTMLInputElement>("#myInput")
-  ?.addEventListener("focus", doSmth);
-
-function doSmth(e: UIEvent) {
-  const val = e.target as HTMLInputElement;
-  console.log(e, val.value);
-}*/
+new DrawingApp();
