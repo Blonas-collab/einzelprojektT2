@@ -1,3 +1,16 @@
+var myName = document.querySelector("#myName") as HTMLElement;
+var outputer = document.querySelector("#outputer") as HTMLElement;
+var bestaetigen = document.querySelector("#bestaetigen") as HTMLButtonElement;
+bestaetigen.addEventListener("click",function(){displayInput()});
+console.log("Hallo welt")
+function displayInput():void {
+  console.log(outputer);
+  outputer.innerHTML = myName.innerHTML;
+}
+console.log("Hallo welt")
+/*if (myName.length )
+  alert*/
+
 class DrawingApp {
   private canvas: HTMLCanvasElement;
   private context: CanvasRenderingContext2D;

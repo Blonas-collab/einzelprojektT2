@@ -9,19 +9,31 @@
     <title>Montagsmaler</title>
 </head>
 <body>
+    
     <div id="Header"><h1>M o n t a g s m a l e r</h1></div>
-    <div class="inputfields">
-        <p>Gebe hier deinen Namen ein</p>
-        <p>und dir wird ein Wort zum Zeichen angezeigt.</p>
+    <form class="inputfields" action="/src/index.ts">
+        <label for="myName">Gib hier deinen Namen ein:</label><br><br>
+       <!-- <p>und dir wird ein Wort zum Zeichen angezeigt.</p> -->
         <input id="myName" placeholder="Dein Name">
-    </div>
+        <button id="bestaetigen">Bestätigen</button>
+        <p id="outputer"></p>
+    </form>
     <div class="canvasWrapper">
         <canvas id="canvas" width= "700" height="600"></canvas>
     </div>
-    <p id="clear">clear</p>
-    <script src="/build/bundle.js"></script>
-    <!--<div class="buttons">
-        <button class="button">Löschen</button>
-    </div>--> 
+    <div class="buttons">
+    <button id="clear">Löschen</p>
+        <script src="/build/bundle.js"></script>
+    </button>
+    <button id="color">Farbe
+        
+    </button>
+    <button id="thickness">Breite
+
+    </button>
+    </div>
+    <div id="drucken">
+        <a href="javascript:self.print()">Seite drucken</a>
+    </div>
 </body>
 </html>
