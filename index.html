@@ -5,28 +5,32 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css">
-    <script src="/build/bundle.js"></script>
+    <script defer src="/build/bundle.js"></script>
     <title>Montagsmaler</title>
 </head>
 <body>
     
-    <div id="Header"><h1>M o n t a g s m a l e r</h1></div>
-    <form class="inputfields" action="/src/index.ts">
-        <label for="myName">Gib hier deinen Namen ein:</label><br><br>
-       <!-- <p>und dir wird ein Wort zum Zeichen angezeigt.</p> -->
-        <input id="myName" placeholder="Dein Name">
-        <button id="bestaetigen">Bestätigen</button>
-        <p id="outputer"></p>
-    </form>
+    <div id="Header">
+        <h1>M o n t a g s m a l e r</h1>
+        <h2 id="animalNameField">Tiere</h2>
+    </div>
+    <div id="nameInputWrapper">
+        <label for="nameInputField">Gib hier deinen Namen ein:</label><br><br>
+        <input id="nameInputField" placeholder="Dein Name">
+        <button id="inputNameButton">Bestätigen</button>
+    </div>
+    <p id="outputName"></p>
+    <div class="random">
+        <button id="randomButton">Zufälliges Tier</button>
+        <h3>hier erscheint ein Tier das du zeichnen kanns</h3>
+    </div>
     <div class="canvasWrapper">
-        <canvas id="canvas" width= "700" height="600"></canvas>
+        <canvas id="canvas" width="700" height="600"></canvas>
     </div>
     <div class="buttons">
     <button id="clear">Löschen</p>
-        <script src="/build/bundle.js"></script>
     </button>
     <button id="color">Farbe
-        
     </button>
     <button id="thickness">Breite
 

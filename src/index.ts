@@ -1,16 +1,25 @@
-var myName = document.querySelector("#myName") as HTMLElement;
-var outputer = document.querySelector("#outputer") as HTMLElement;
-var bestaetigen = document.querySelector("#bestaetigen") as HTMLButtonElement;
-bestaetigen.addEventListener("click",function(){displayInput()});
-console.log("Hallo welt")
-function displayInput():void {
-  console.log(outputer);
-  outputer.innerHTML = myName.innerHTML;
+import { result, inputNameButton, nameInputField, nameInputWrapper, outputName, randomButton } from "./dom-utils";
+inputNameButton.addEventListener("click", ()=> inputName())
+function inputName() {
+  outputName.textContent = nameInputField.value;
+  nameInputWrapper.style.display = "none";
 }
-console.log("Hallo welt")
-/*if (myName.length )
-  alert*/
 
+//Random Tier
+const randomTiere = ["Hund", "Katze", "Maus", "Elefant", "Flamingo", "Schlange", "Pferd"] as Array<string>;
+
+function getRandomNumber(min, max){
+  let step1 = max -min +1;
+  let step2 = Math.random() * step1;
+  let resultValue = Math.floor(step2) + min;
+  return resultValue;
+}
+randomButton.addEventListener("click", () => {
+  let index = getRandomNumber(0, randomTiere.length-1);
+  result.textContent = randomTiere[index];
+})
+
+//Canvas
 class DrawingApp {
   private canvas: HTMLCanvasElement;
   private context: CanvasRenderingContext2D;
