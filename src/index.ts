@@ -1,11 +1,18 @@
-import { result, inputNameButton, nameInputField, nameInputWrapper, outputName, randomButton } from "./dom-utils";
+import { result, inputNameButton, nameInputField, nameInputWrapper, outputName, randomButton, darkModeButton, bodyDiv, darkMode } from "./dom-utils";
 import { DrawingApp } from "./canvas";
 
+//Dark Mode
+darkModeButton.addEventListener("click", ()=> changeDarkMode());
+function changeDarkMode() {
+  bodyDiv.classList.toggle("darkModeOn");
+}
+
 //Inputfeld
-inputNameButton.addEventListener("click", ()=> inputName())
+inputNameButton.addEventListener("click", ()=> inputName());
 function inputName() {
   outputName.textContent = nameInputField.value + " malt hier ein/e";
   nameInputWrapper.style.display = "none";
+  darkMode.style.visibility = "visible";
 }
 
 //Random Tier
