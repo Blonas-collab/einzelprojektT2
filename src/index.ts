@@ -1,10 +1,10 @@
-import { result, inputNameButton, nameInputField, nameInputWrapper, outputName, randomButton, darkModeButton, bodyDiv, darkMode } from "./dom-utils";
+import { result, inputNameButton, nameInputField, nameInputWrapper, outputName, randomButton, darkModeButton, body, darkMode } from "./dom-utils";
 import { DrawingApp } from "./canvas";
 
 //Dark Mode
 darkModeButton.addEventListener("click", ()=> changeDarkMode());
 function changeDarkMode() {
-  bodyDiv.classList.toggle("darkModeOn");
+  body.classList.toggle("darkModeOn");
 }
 
 //Inputfeld

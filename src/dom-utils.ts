@@ -1,5 +1,5 @@
 export const darkModeButton = document.getElementById("darkModeButton") as HTMLButtonElement;
-export const bodyDiv = document.getElementById("bodyDiv") as HTMLDivElement;
+export const body = document.body;
 export const nameInputField = document.getElementById("nameInputField") as HTMLInputElement;
 export const inputNameButton = document.getElementById("inputNameButton") as HTMLButtonElement;
 export const outputName = document.getElementById("outputName") as HTMLElement;
