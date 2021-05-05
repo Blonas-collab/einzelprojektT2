@@ -5,39 +5,35 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css">
-    <script defer src="/build/bundle.js"></script>
-    <title>Montagsmaler</title>
+    <script defer src="/einzelprojektT2/build/bundle.js"></script>
+    <title>Deine Zeichenfläche</title>
 </head>
 <body>
     
-    <div id="Header">
-        <h1>M o n t a g s m a l e r</h1>
-        <h2 id="animalNameField">Tiere</h2>
+    <div id="header">
+        <h1>D e i n e <br> Z e i c h e n f l ä c h e</h1>
     </div>
+
     <div id="nameInputWrapper">
-        <label for="nameInputField">Gib hier deinen Namen ein:</label><br><br>
-        <input id="nameInputField" placeholder="Dein Name">
+        <label for="nameInputField">Wähle unten zuerst ein Tier! <br>Gib dann deinen Namen ein:</label><br><br>
+        <input id="nameInputField" placeholder="Dein Name" alt="Eingabefeld für den Namen der zeichnenden Person">
         <button id="inputNameButton">Bestätigen</button>
     </div>
-    <p id="outputName"></p>
-    <div class="random">
-        <button id="randomButton">Zufälliges Tier</button>
-        <h3>hier erscheint ein Tier das du zeichnen kanns</h3>
-    </div>
+    <h2 id="outputName"></p>
+    <hr>
+    <button id="randomButton">Dein zufälliges Tier:</button>
+    <h2 id="animalNameField"></h2>
+
     <div class="canvasWrapper">
         <canvas id="canvas" width="700" height="600"></canvas>
     </div>
     <div class="buttons">
-    <button id="clear">Löschen</p>
-    </button>
-    <button id="color">Farbe
-    </button>
-    <button id="thickness">Breite
-
-    </button>
+        <button id="colorButton">Farbe</button>
+        <button id="clearButton">Löschen</button>
+        <button id="thicknessButton">Breite</button>
     </div>
-    <div id="drucken">
-        <a href="javascript:self.print()">Seite drucken</a>
+    <div id="druckenLink">
+        <a href="javascript:self.print()">Kunstwerk drucken</a>
     </div>
 </body>
 </html>

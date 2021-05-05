@@ -7,36 +7,116 @@ h1 {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-size: 40pt;
 }
-#canvas{
-    border: 1px solid gray;
-    background-color: rgb(253, 242, 228);;
-    margin: 10px;
-}
-.inputfields{
-    padding: 0 0 10px 0;
-}
-#myName{
-    padding: 7px;
-    border: 1px solid orange;
-}
-#clear{
-    background-color: rgb(255, 0, 0);
+#randomButton{
+    background-color: rgb(230, 230, 230);
     font-size: 12pt;
-    border: none;
-    color: white;
-    padding: 15px 20px 0 20px ;
+    border: solid 1px gray;
+    border-radius: 20px;
+    color: black;
+    padding: 7px 12px 7px 12px ;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     margin: 4px 2px;
     cursor: pointer;
 }
-#color{
-    alt: "Farbe ändern";
+#randomButton:hover{
+    background-color: orange;
+    color: white;
+    border: none;
+    padding: 8px 13px 8px 13px;
 }
-#thickness{
-    alt: "Breite ändern";
+#animalNameButton{
+    background-color: rgb(230, 230, 230);
+    font-size: 10pt;
+    border: solid 1px green;
+    border-radius: 20px;
+    color: black;
+    padding: 7px 12px 7px 12px ;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 4px 2px;
+    cursor: pointer;
 }
-#drucken{
+#animalNameButton:hover{
+    background-color: green;
+    color: white;
+    border: none;
+    padding: 8px 13px 8px 13px;
+}
+hr{
+    width: 20%;
+    color: gray;
+}
+#canvas{
+    border: 1px solid gray;
+    background-color: rgb(253, 242, 228);
+    margin: 10px;
+}
+#header{
+    margin-bottom: 25px;
+}
+#nameInputWrapper{
+    margin-top: 25px;
+}
+#nameInputField{
+    padding: 7px;
+    border: 1px solid orange;
+}
+#inputNameButton{
+    background-color: rgb(230, 230, 230);
+    font-size: 10pt;
+    border: none;
+    color: black;
+    padding: 7px 12px 7px 12px ;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+#inputNameButton:hover{
+    background-color: green;
+    color: white;
+}
+#clearButton{
+    background-color: rgb(255, 0, 0);
+    font-size: 12pt;
+    border: none;
+    color: white;
+    padding: 15px 20px 15px 20px ;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 4px 2px;
+    cursor: pointer;
+    margin: 0 25px 20px 25px;
+}
+#colorButton{
+    background-color: rgb(230, 230, 230);
+    font-size: 12pt;
+    border: none;
+    color: black;
+    padding: 15px 20px 15px 20px ;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+#thicknessButton{
+    background-color: rgb(230, 230, 230);
+    font-size: 12pt;
+    border: none;
+    color: black;
+    padding: 15px 20px 15px 20px ;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+#druckenLink{
     font-size: 10pt;
 }
