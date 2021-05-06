@@ -14,6 +14,7 @@
         <img src="/einzelprojektT2/assets/53164-light-dark-mode-button.gif" alt="Dark Mode GIF - Sonne zu Mond">
         <button id="darkModeButton">Dark Mode</button>
     </div>
+
     <div id="header">
         <h1>D e i n e <br> Z e i c h e n f l ä c h e</h1>
     </div>
@@ -21,21 +22,25 @@
     <div id="nameInputWrapper">
         <label for="nameInputField">Wähle unten zuerst ein Tier! <br>Gib dann deinen Namen ein:</label><br><br>
         <input id="nameInputField" placeholder="Dein Name" alt="Eingabefeld für den Namen der zeichnenden Person">
-        <button id="inputNameButton">Bestätigen</button>
+        <button id="nameInputButton">Bestätigen</button>
     </div>
     <h2 id="outputName">
+
     <hr>
-    <button id="randomButton">Dein zufälliges Tier:</button>
-    <h2 id="animalNameField"></h2>
+
+    <button id="randomAnimalNameButton">Dein zufälliges Tier:</button>
+    <h2 id="outputAnimalName"></h2>
 
     <div class="canvasWrapper">
         <canvas id="canvas" width="700" height="600"></canvas>
     </div>
-    <div class="buttons">
-        <button id="colorButton">Farbe</button>
+
+    <div class="canvasButtons">
+        <button id="changeColorButton">Farbe</button>
         <button id="clearButton">Löschen</button>
-        <button id="thicknessButton">Breite</button>
+        <button id="changeThicknessButton">Breite</button>
     </div>
+
     <div id="druckenLink">
         <a href="javascript:self.print()">Kunstwerk drucken</a>
     </div>

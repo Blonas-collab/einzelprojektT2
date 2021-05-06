@@ -1,4 +1,4 @@
-import { result, inputNameButton, nameInputField, nameInputWrapper, outputName, randomButton, darkModeButton, body, darkMode, randomTiere } from "./dom-utils";
+import { outputAnimalName, nameInputButton, nameInputField, nameInputWrapper, outputName, randomAnimalNameButton, darkModeButton, body, darkMode, animalNameList } from "./dom-utils";
 import { DrawingApp } from "./canvas";
 
 //Dark Mode
@@ -8,7 +8,7 @@ function changeDarkMode() {
 }
 
 //Inputfeld
-inputNameButton.addEventListener("click", ()=> inputName());
+nameInputButton.addEventListener("click", ()=> inputName());
 function inputName() {
   outputName.textContent = nameInputField.value + " malt hier ein/e";
   nameInputWrapper.style.display = "none";
@@ -22,9 +22,9 @@ function getRandomNumber(min, max){
   let resultValue = Math.floor(step2) + min;
   return resultValue;
 }
-randomButton.addEventListener("click", () => {
-  let index = getRandomNumber(0, randomTiere.length-1);
-  result.textContent = randomTiere[index];
+randomAnimalNameButton.addEventListener("click", () => {
+  let index = getRandomNumber(0, animalNameList.length-1);
+  outputAnimalName.textContent = animalNameList[index];
 })
 
 //canvas

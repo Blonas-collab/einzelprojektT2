@@ -1,11 +1,11 @@
+export const darkMode = document.getElementById("darkMode") as HTMLDivElement;
 export const darkModeButton = document.getElementById("darkModeButton") as HTMLButtonElement;
 export const body = document.body;
 export const nameInputField = document.getElementById("nameInputField") as HTMLInputElement;
-export const inputNameButton = document.getElementById("inputNameButton") as HTMLButtonElement;
+export const nameInputButton = document.getElementById("nameInputButton") as HTMLButtonElement;
 export const outputName = document.getElementById("outputName") as HTMLElement;
-export const darkMode = document.getElementById("darkMode") as HTMLDivElement;
 export const nameInputWrapper = document.getElementById("nameInputWrapper") as HTMLDivElement;
-export const randomButton = document.getElementById("randomButton") as HTMLDivElement;
-export const result = document.getElementById("animalNameField") as HTMLElement;
-export const randomTiere = ["Hund", "Katze", "Maus", "Elefant", "Flamingo", "Schlange", "Pferd", "Chameleon", "Hase", "Nashorn", "Hai", "Mücke"] as Array<string>;
-export let canvas = document.getElementById("canvas") as HTMLCanvasElement;
+export const randomAnimalNameButton = document.getElementById("randomAnimalNameButton") as HTMLDivElement;
+export const outputAnimalName = document.getElementById("outputAnimalName") as HTMLElement;
+export const animalNameList = ["Hund", "Katze", "Maus", "Elefant", "Flamingo", "Schlange", "Pferd", "Chameleon", "Hase", "Nashorn", "Hai", "Mücke"] as Array<string>;
+export const canvas = document.getElementById("canvas") as HTMLCanvasElement;
