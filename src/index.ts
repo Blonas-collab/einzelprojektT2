@@ -1,4 +1,4 @@
-import { result, inputNameButton, nameInputField, nameInputWrapper, outputName, randomButton, darkModeButton, body, darkMode } from "./dom-utils";
+import { result, inputNameButton, nameInputField, nameInputWrapper, outputName, randomButton, darkModeButton, body, darkMode, randomTiere } from "./dom-utils";
 import { DrawingApp } from "./canvas";
 
 //Dark Mode
@@ -16,8 +16,6 @@ function inputName() {
 }
 
 //Random Tier
-const randomTiere = ["Hund", "Katze", "Maus", "Elefant", "Flamingo", "Schlange", "Pferd"] as Array<string>;
-
 function getRandomNumber(min, max){
   let step1 = max -min +1;
   let step2 = Math.random() * step1;
@@ -31,3 +29,18 @@ randomButton.addEventListener("click", () => {
 
 //canvas
 new DrawingApp();
+
+
+//save&load canvas
+function saveDrawingApp(){
+  localStorage.setItem("DrawingApp", this.DrawingApp.toDataURL())
+  console.log("Drawing App gespeichert")
+}
+
+
+function loadDrawingApp(){
+  let dataURL = localStorage.getItem("DrawingApp");
+  let drawing = new Image();
+  drawing.src = dataURL;
+  console.log("Drawing App geladen")
+}

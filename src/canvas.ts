@@ -65,7 +65,7 @@ export class DrawingApp {
     this.clickDrag.push(dragging);
   }
   
-  private clearCanvas() {
+  public clearCanvas() {
     this.context
         .clearRect(0, 0, this.canvas.width, this.canvas.height);
     this.clickX = [];
@@ -116,11 +116,6 @@ export class DrawingApp {
   
     e.preventDefault();
   }
-  //selbst geschrieben: Canvas speichern
-  /*saveDrawing(){
-    console.log(dataURL)
-    let fullQuality = canvas.toDataURL("imeg/jpeg", 1.0);
-    localStorage.setItem("canvas", this.canvas.toDataURL());
-  }*/
 
+  
   }

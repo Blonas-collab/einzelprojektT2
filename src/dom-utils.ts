@@ -7,4 +7,5 @@ export const darkMode = document.getElementById("darkMode") as HTMLDivElement;
 export const nameInputWrapper = document.getElementById("nameInputWrapper") as HTMLDivElement;
 export const randomButton = document.getElementById("randomButton") as HTMLDivElement;
 export const result = document.getElementById("animalNameField") as HTMLElement;
+export const randomTiere = ["Hund", "Katze", "Maus", "Elefant", "Flamingo", "Schlange", "Pferd", "Chameleon", "Hase", "Nashorn", "Hai", "Mücke"] as Array<string>;
 export let canvas = document.getElementById("canvas") as HTMLCanvasElement;
