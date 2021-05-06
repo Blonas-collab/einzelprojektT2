@@ -29,18 +29,3 @@ randomButton.addEventListener("click", () => {
 
 //canvas
 new DrawingApp();
-
-
-//save&load canvas
-function saveDrawingApp(){
-  localStorage.setItem("DrawingApp", this.DrawingApp.toDataURL())
-  console.log("Drawing App gespeichert")
-}
-
-
-function loadDrawingApp(){
-  let dataURL = localStorage.getItem("DrawingApp");
-  let drawing = new Image();
-  drawing.src = dataURL;
-  console.log("Drawing App geladen")
-}

@@ -3,7 +3,7 @@ import { canvas } from "./dom-utils";
 //Canvas
 export class DrawingApp {
     private canvas: HTMLCanvasElement;
-    private context: CanvasRenderingContext2D;
+    context: CanvasRenderingContext2D;
     private paint: boolean;
     
     private clickX: number[] = [];
@@ -24,8 +24,24 @@ export class DrawingApp {
         this.redraw();
         this.createUserEvents();
     }
+
+    //save&load canvas
+    saveDrawingApp(){
+      localStorage.setItem("DrawingApp", this.canvas.toDataURL());
+    }
+    loadDrawingApp(){
+      let dataURL = localStorage.getItem("DrawingApp");
+      let drawing = new Image();
+      drawing.src = dataURL;
+      let that = this;
+      drawing.onload = function(){
+        that.context.drawImage(drawing, 0, 0);
+      }
+    }
+
     private createUserEvents() {
       let canvas = this.canvas;
+      this.context = this.canvas.getContext("2d");
   
       canvas.addEventListener("mousedown", this.pressEventHandler);
       canvas.addEventListener("mousemove", this.dragEventHandler);
@@ -37,6 +53,8 @@ export class DrawingApp {
       canvas.addEventListener("touchend", this.releaseEventHandler);
       canvas.addEventListener("touchcancel", this.cancelEventHandler);
   
+      this.loadDrawingApp();
+
       document.getElementById('clearButton')
               .addEventListener("click", this.clearEventHandler);
   }
@@ -71,6 +89,7 @@ export class DrawingApp {
     this.clickX = [];
     this.clickY = [];
     this.clickDrag = [];
+    this.saveDrawingApp();
   }
   private clearEventHandler = () => {
     this.clearCanvas();
@@ -79,6 +98,7 @@ export class DrawingApp {
   private releaseEventHandler = () => {
     this.paint = false;
     this.redraw();
+    this.saveDrawingApp();
   }
   
   private cancelEventHandler = () => {
