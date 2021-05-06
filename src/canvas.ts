@@ -1,6 +1,9 @@
 import { canvas } from "./dom-utils";
 
 //Canvas
+//Disclaimer: Dieser Code für den Canvas, abgesehen von der saveDrawingApp() und loadDrawingApp() Methode und damit zusammenhängenden kleinen Anpassungen,
+//            wurde von https://kernhanda.github.io/tutorial-typescript-canvas-drawing/ kopiert!
+
 export class DrawingApp {
     private canvas: HTMLCanvasElement;
     context: CanvasRenderingContext2D;
