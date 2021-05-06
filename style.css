@@ -24,6 +24,10 @@ img{
     cursor: pointer;
     border-radius: 25px;
 }
+#darkModeButton:hover{
+    background-color: #403B34;
+    color: white;
+}
 body{
     text-align:center;
     font-family: Arial, Helvetica, sans-serif;
